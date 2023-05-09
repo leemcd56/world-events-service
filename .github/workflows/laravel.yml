@@ -41,14 +41,14 @@ jobs:
       run: chmod -R 777 storage bootstrap/cache
     - name: Create Database
       env:
-        DB_CONNECTION: postgres
+        DB_CONNECTION: pgsql
         DB_PORT: 5432
         DB_USERNAME: ''
       run: |
         php artisan migrate:fresh --seed
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
-        DB_CONNECTION: postgres
+        DB_CONNECTION: pgsql
         DB_PORT: 5432
         DB_USERNAME: ''
       run: vendor/bin/phpunit
