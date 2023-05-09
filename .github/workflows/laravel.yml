@@ -24,7 +24,9 @@ jobs:
           --health-cmd pg_isready
           --health-interval 10s
           --health-timeout 5s
-          --health-retries 5
+          --health-retries 5'
+        ports:
+          - 5432:5432
 
     steps:
     - uses: shivammathur/setup-php@15c43e89cdef867065b0213be354c2841860869e
@@ -42,7 +44,7 @@ jobs:
     - name: Create Database
       env:
         DB_CONNECTION: pgsql
-        DB_HOST: postgres
+        DB_HOST: localhost
         DB_PORT: 5432
         DB_USERNAME: ''
       run: |
@@ -50,7 +52,7 @@ jobs:
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
         DB_CONNECTION: pgsql
-        DB_HOST: postgres
+        DB_HOST: localhost
         DB_PORT: 5432
         DB_USERNAME: ''
       run: vendor/bin/phpunit
