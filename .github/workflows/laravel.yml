@@ -42,6 +42,7 @@ jobs:
     - name: Create Database
       env:
         DB_CONNECTION: pgsql
+        DB_HOST: postgres
         DB_PORT: 5432
         DB_USERNAME: ''
       run: |
@@ -49,6 +50,7 @@ jobs:
     - name: Execute tests (Unit and Feature tests) via PHPUnit
       env:
         DB_CONNECTION: pgsql
+        DB_HOST: postgres
         DB_PORT: 5432
         DB_USERNAME: ''
       run: vendor/bin/phpunit
